@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>yEAh GB emulator | YGP</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#477c59" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="/styles/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="/bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="/bower_components/jsgbc-ui/jsgbc-ui.html" />
+
+    {% include gtag.html %}
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="main">
+        <div class="main-center">
+            <div class="main-wrapper">
+                <jsgbc-ui loading>
+                    <h1 slot="loading">Loading...</h1>
+                    <canvas class="pixelated" slot="lcd"></canvas>
+                </jsgbc-ui>
+
+                <div class="file-button-bar">
+                    <file-button style="display:none!important" id="insert-cartridge">
+                        <div class="text">Insert Cartridge</div>
+                        <i class="far fa-caret-square-down fa-3x"></i>
+                        <input id="fileInput" type="file" accept=".gb,.gbc,.zip" />
+                    </file-button>
+
+                    <file-button style="color:black;position:absolute;top:660px;right:577px" id="download-save"
+                        class="disabled">
+                        <div class="text">Download Save</div>
+                        <i class="far fa-arrow-alt-circle-down fa-3x"></i>
+                    </file-button>
+
+                    <file-button style="color:black;position:absolute;top:660px;left:577px" id="upload-save"
+                        class="disabled">
+                        <div class="text">Upload Save</div>
+                        <i class="far fa-arrow-alt-circle-up fa-3x"></i>
+                        <input type="file" accept=".sav" />
+                    </file-button>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="overlay">
+            <div class="overlay-content">
+                <button title="Load the requested game from the server into the emulator."
+                    style="background-color:#007bff;color:white!important" class="loadbutton"
+                    onmouseover="this.style.backgroundColor='#0056b3';"
+                    onmouseout="this.style.backgroundColor='#007bff';" onclick="simulateFileInput('./game.gbc')"
+                    id="closeOverlayBtn">Load game</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src=" /assets/jsgbc-web.js "></script>
+    <script src=" /assets/index.js"></script>
+    
+</body>
+
+</html>
